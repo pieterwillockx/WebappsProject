@@ -16,4 +16,8 @@ router.get('/userlist', function(req, res){
 	});
 });
 
+router.get('/home', function(req, res, next) {
+	res.render('home', { title: 'Home'});
+});
+
 module.exports = router;

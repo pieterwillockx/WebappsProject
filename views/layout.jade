@@ -1,7 +1,39 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+		script(src='/javascripts/jquery.js', rel='script')
+		script(src='/javascripts/bootstrap.js', rel='script')
+	body
+		div.content
+			ul(class="nav nav-pills nav-stacked", id="navbar1")
+				li(role="presentation", class="active")
+					a(href="#") Home
+				li(role="presentation", class="dropdown")
+					a(class="dropdown-toggle", data-toggle="dropdown", href="#", role="button", aria-haspopup="true", aria-expanded="false") 24/7 Sportzorg
+						span(class="caret")
+					ul(class="dropdown-menu", style="margin-left:100%;margin-top:-40px;")
+						li
+							a(href="#") Repoz
+						li
+							a(href="#") Sportverzorgingscentrum
+						li
+							a(href="#") Bart Willockx
+						li
+							a(href="#") Guesthouse
+				li(role="presentation", class="dropdown")
+					a(class="dropdown-toggle", data-toggle="dropdown", href="#", role="button", aria-haspopup="true", aria-expanded="false") Personal Coaching
+						span(class="caret")
+					ul(class="dropdown-menu", style="margin-left:100%;margin-top:-38px;")
+						li
+							a(href="#") Voedingsadvies
+						li
+							a(href="#") Buggenhoutse Wielerschool
+				li(role="presentation")
+					a(href="#") Webwinkel
+				li(role="presentation")
+					a(href="#") Contact
+
+		block content
