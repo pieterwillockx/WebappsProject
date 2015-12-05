@@ -4,7 +4,7 @@ var router = express.Router();
 var Account = require('../models/account.js');
 
 //GET register view
-router.get('/', function(req, res) {
+router.get('/register', function(req, res) {
     res.render('register', { });
 });
 

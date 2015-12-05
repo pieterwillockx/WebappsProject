@@ -16,7 +16,7 @@ a {
 }
 
 #navbar1{
-	width: 80%;
+	width: 100%;
 	padding: 5% 0 0 2%;
 }
 
@@ -26,6 +26,12 @@ a {
 	background-image: url("../images/home-image.jpg");
 	background-size: 100%;
 	box-shadow: 0px 0px 5px 5px;
+	padding-right: 8%;
+	padding-left: 2%;
+}
+
+.row{
+	padding-top: 50px;
 }
 
 .main-content{
@@ -39,6 +45,7 @@ a {
 	margin-left: 68%;
 	width: 15%;
 	text-align: left;
+	z-index: 1;
 }
 
 .card{
@@ -47,6 +54,14 @@ a {
 	border-radius: 5px;
 	width: 40%;
 	padding-bottom: 3%;
+}
+
+.content-card{
+	background-color: rgba(127, 127, 127, 0.6);
+	border: 1px solid black;
+	border-radius: 5px;
+	width: 100%;
+	padding: 0% 5% 5% 5%;
 }
 
 .card-img-top{
@@ -66,8 +81,28 @@ a {
 	margin-left: 5%;
 }
 
+.column-2, .column-8{
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.column-2{
+	width: 20%;
+}
+
+.column-8{
+	width: 80%;
+}
+
 h1{
 	margin-bottom: 4%;
 	color: white;
 	padding-left: 5%;
+}
+
+form{
+	max-width: 300px;
 }

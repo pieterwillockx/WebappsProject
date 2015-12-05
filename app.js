@@ -23,7 +23,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon('./public/favicon.ico'));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -36,10 +36,10 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join('./public')));
 
 app.use('/', routes);
-app.use('/register', accounts);
+app.use('/accounts', accounts);
 app.use('/webshop', webshop);
 
 //passport config
@@ -49,7 +49,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 //mongoose
-mongoose.connect('mongodb://localhost/project');
+mongoose.connect('mongodb://papelierke:kip-rijst6@ds061354.mongolab.com:61354/pieter_willockx_webapps_db');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
