@@ -1,39 +1,78 @@
 doctype html
-html
+html(ng-app="sportzorg")
 	head
 		title= title
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(href='/stylesheets/bootstrap.css', rel='stylesheet')
 		script(src='/javascripts/jquery.js', rel='script')
 		script(src='/javascripts/bootstrap.js', rel='script')
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+		script(src="/javascripts/app.js", rel='script')
 	body
-		div.content
-			ul(class="nav nav-pills nav-stacked", id="navbar1")
-				li(role="presentation", class="active")
-					a(href="#") Home
-				li(role="presentation", class="dropdown")
-					a(class="dropdown-toggle", data-toggle="dropdown", href="#", role="button", aria-haspopup="true", aria-expanded="false") 24/7 Sportzorg
+		if (!user)
+			button#loginbutton.btn.btn-default(data-toggle="modal" data-target="#loginModal") Login
+			div#loginModal.modal.fade(role="dialog")
+				div.modal-dialog
+					div.modal-content
+						div.modal-header
+							button.close(type="button", data-dismiss="modal") &times;
+							h4.modal-title Inloggen
+						div.modal-body
+							form(role="form", action="/login", method="post")
+								div.form-group
+									label(for="username") Email address:
+									input#email.form-control(type="text", name="username", placeholder="Gebruikersnaam")
+								div.form-group
+									label(for="password") Password:
+									input#password.form-control(type="password", name="password", placeholder="Paswoord")
+								div.checkbox
+									label
+										input(type="checkbox")
+										p Remember me
+								button.btn.btn-default(type="submit") Submit
+							p Nog geen account?
+							a(href="/register") Maak nu een account aan.
+		if (user)
+			button#loginbutton.btn.btn-default(data-toggle="modal" data-target="#loginModal") Hallo, #{user.username}!
+			div#loginModal.modal.fade(role="dialog")
+				div.modal-dialog
+					div.modal-content
+						div.modal-header
+							button.close(type="button", data-dismiss="modal") &times;
+							h4.modal-title Uitloggen
+						div.modal-body
+							p Wenst u uit te loggen?
+							a.btn.btn-default(href="/logout", role="button") Uitloggen
+							
+		div.content.row
+			div.col-xs-6.col-md-4
+				ul(class="nav nav-pills nav-stacked", id="navbar1")
+					li(role="presentation", class="active")
+						a(href="#") Home
+					li(role="presentation", class="dropdown")
+						a(class="dropdown-toggle", data-toggle="dropdown", href="#", role="button", aria-haspopup="true", aria-expanded="false") 24/7 Sportzorg
 						span(class="caret")
-					ul(class="dropdown-menu", style="margin-left:100%;margin-top:-40px;")
-						li
-							a(href="#") Repoz
-						li
-							a(href="#") Sportverzorgingscentrum
-						li
-							a(href="#") Bart Willockx
-						li
-							a(href="#") Guesthouse
-				li(role="presentation", class="dropdown")
-					a(class="dropdown-toggle", data-toggle="dropdown", href="#", role="button", aria-haspopup="true", aria-expanded="false") Personal Coaching
-						span(class="caret")
-					ul(class="dropdown-menu", style="margin-left:100%;margin-top:-38px;")
-						li
-							a(href="#") Voedingsadvies
-						li
-							a(href="#") Buggenhoutse Wielerschool
-				li(role="presentation")
-					a(href="#") Webwinkel
-				li(role="presentation")
-					a(href="#") Contact
-
-		block content
+						ul(class="dropdown-menu", style="margin-left:100%;margin-top:-40px;")
+							li
+								a(href="#") Repoz
+							li
+								a(href="#") Sportverzorgingscentrum
+							li
+								a(href="#") Bart Willockx
+							li
+								a(href="#") Guesthouse
+					li(role="presentation", class="dropdown")
+						a(class="dropdown-toggle", data-toggle="dropdown", href="#", role="button", aria-haspopup="true", aria-expanded="false") Personal Coaching
+							span(class="caret")
+						ul(class="dropdown-menu", style="margin-left:100%;margin-top:-38px;")
+							li
+								a(href="#") Voedingsadvies
+							li
+								a(href="#") Buggenhoutse Wielerschool
+					li(role="presentation")
+						a(href="/webshop") Webwinkel
+					li(role="presentation")
+						a(href="#") Contact
+			div.col-xs-12.col-md-8
+				.main-content
+					block content

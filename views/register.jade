@@ -1,0 +1,39 @@
+extends layout
+
+block content
+	button#loginbutton.btn.btn-default(data-toggle="modal" data-target="#loginModal") Login
+	div#loginModal.modal.fade(role="dialog")
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type="button", data-dismiss="modal") &times;
+					h4.modal-title Inloggen
+				div.modal-body
+					form(role="form", action="/login", method="post")
+						div.form-group
+							label(for="username") Email address:
+							input#email.form-control(type="username")
+						div.form-group
+							label(for="password") Password:
+							input#password.form-control(type="password")
+						div.checkbox
+							label
+								input(type="checkbox")
+								p Remember me
+						button.btn.btn-default(type="submit") Submit
+					p Nog geen account?
+					a(href="/register") Maak nu een account aan.
+	.container
+		h1 Maak een account aan
+		p.lead Vul de gegevens in en klik op "Registreren" om een account aan te maken.
+		br
+		form(role="form", action="/register", method="post")
+			div.form-group
+				label(for="username") Email address:
+				input#email.form-control(type="text", name="username", placeholder="Gebruikersnaam")
+			div.form-group
+				label(for="password") Password:
+				input#password.form-control(type="password", name="password", placeholder="Paswoord")
+			button.btn.btn-default(type="submit") Submit
+		br
+		h4= info

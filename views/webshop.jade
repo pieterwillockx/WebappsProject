@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	h1= title
+	div(ng-controller="Webshop")
+		ul(ng-repeat="item in items")
+			.card
+				img.card-img-top(src="http://www.pianto.lu/photo/photo%20Egelseer%20rere.jpg", alt="pianto")
+				.card-block
+					h4.card-title {{item.name}}
+					p.card-text {{item.price}}
+					a.card-button.btn.btn-primary(href="#") In winkelmand
+		
+
+			
