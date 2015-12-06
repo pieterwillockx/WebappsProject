@@ -11,7 +11,7 @@ html(ng-app="sportzorg")
 	body
 		div.content
 			if (!user)
-				button#loginbutton.btn.btn-default(data-toggle="modal" data-target="#loginModal") Login
+				button#loginbutton.btn.btn-default(data-toggle="modal" data-target="#loginModal") Inloggen
 				div#loginModal.modal.fade(role="dialog")
 					div.modal-dialog
 						div.modal-content
@@ -21,18 +21,14 @@ html(ng-app="sportzorg")
 							div.modal-body
 								form(role="form", action="/accounts/login", method="post")
 									div.form-group
-										label(for="username") Email address:
+										label(for="username") Gebruikersnaam:
 										input#email.form-control(type="text", name="username", placeholder="Gebruikersnaam")
 									div.form-group
-										label(for="password") Password:
+										label(for="password") Paswoord:
 										input#password.form-control(type="password", name="password", placeholder="Paswoord")
-									div.checkbox
-										label
-											input(type="checkbox")
-											p Remember me
-									button.btn.btn-default(type="submit") Submit
+									button.btn.btn-default.login-button(type="submit") Inloggen
 								p Nog geen account?
-								a(href="/accounts/register") Maak nu een account aan.
+								a.register(href="/accounts/register") Maak nu een account aan.
 			if (user)
 				button#loginbutton.btn.btn-default(data-toggle="modal" data-target="#loginModal") Hallo, #{user.username}!
 				div#loginModal.modal.fade(role="dialog")
@@ -48,7 +44,7 @@ html(ng-app="sportzorg")
 				div.column-2.nav-container
 					ul(class="nav nav-pills nav-stacked", id="navbar1")
 						li(role="presentation", class="active")
-							a(href="#") Home
+							a(href="/") Home
 						li(role="presentation", class="dropdown")
 							a(class="dropdown-toggle", data-toggle="dropdown", href="#", role="button", aria-haspopup="true", aria-	expanded="false") 24/7 Sportzorg
 								span(class="caret")
